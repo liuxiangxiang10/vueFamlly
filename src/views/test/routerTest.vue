@@ -1,5 +1,7 @@
 <template>
-  <div>routerTest! Success!</div>
+  <div>
+    <div class="routerTest">routerTest! Success!</div>
+  </div>
 </template>
 
 <script>
@@ -14,11 +16,9 @@ export default {
     api.check({
       mobile: '18912619411'
     }).then(res => {
+      console.log('res>>>', res.body)
     })
   }
 }
 </script>
-
-<style>
-
-</style>
+<style lang="scss" src="./css/routerTest.scss" scoped></style>

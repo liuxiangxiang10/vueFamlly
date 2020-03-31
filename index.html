@@ -2,11 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script src="./node_modules/amfe-flexible/index.js"></script>
     <title></title>
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+    (function() { var a = this; a.width = 750; a.fontSize = 100; a.widthProportion = function() { var c = (document.getElementsByTagName("html")[0].offsetWidth) / a.width; return c > 1 ? 1 : c < 0.42667 ? 0.42667 : c; }; a.changePage=function() { var remVal=( parseFloat(a.widthProportion())*100).toFixed(2); document.getElementsByTagName( "html")[0].setAttribute( "style", "font-size:" + remVal + "px !important"); }; a.changePage(); window.addEventListener( "resize", function() { a.changePage() }, false); })();
+    (function() {
+      if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+        handleFontSize();
+      } else {
+        document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+      }
+      function handleFontSize() {
+        // 设置网页字体为默认大小
+        WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+        // 重写设置网页字体大小的事件
+        WeixinJSBridge.on('menu:setfont', function() {
+          WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+        });
+      }
+    })();
+  </script>
 </html>

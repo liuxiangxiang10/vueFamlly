@@ -1,0 +1,315 @@
+@charset "utf-8";
+/* base */
+@import "tobe/base";
+@import "icons";
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+body,html{
+  background-color: #F8F8F8;
+}
+.shareTip{
+  position: fixed;
+  z-index: 9999;
+  top: rem(20);
+  right: rem(-80);
+}
+#app{
+  height:100%;
+  min-height: 100%;
+  & > div{
+    min-height: 100%;
+  }
+}
+/* 遮罩层 */
+.overlay{
+  position: fixed;
+  z-index: 8888;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0,0, .6);
+}
+/* 全屏空白div */
+.ant-transparent{
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+/* flex 很重要 必须 ********** */
+%display-flex {
+  @include display(flex);
+}
+.flex{
+  @extend %display-flex;
+}
+.flex-item{
+  @include flex(1);
+  width: 0;
+}
+.flex-c-m{
+  @extend %display-flex;
+  @include align-items(center);
+  @include justify-content(center);
+}
+.flex-m{
+  @extend %display-flex;
+  @include align-items(center);
+}
+.flex-c{
+  @extend %display-flex;
+  @include justify-content(center);
+}
+.flex-space{
+  @extend %display-flex;
+  @include justify-content(space-between);
+}
+.flex-around {
+  @extend %display-flex;
+  @include justify-content(space-around);
+}
+/* END */
+
+.content {
+  position: relative;
+  padding-top: rem(88);
+}
+
+// preloader
+
+%preloader {
+  display: inline-block;
+  width: rem(40);
+  height: rem(40);
+  border: rem(6) solid #e1e1e1;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: preloader-spin 1s linear infinite;
+  animation: preloader-spin 1s linear infinite;
+  &.middle{
+    width: rem(60);
+    height: rem(60);
+  }
+  &.big{
+    width: rem(90);
+    height: rem(90);
+  }
+  -webkit-transform-origin: 50%;
+          transform-origin: 50%;
+}
+
+.preloader,.infinite-preloader {
+  @extend %preloader;
+}
+
+@-webkit-keyframes preloader-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes preloader-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ovfs-scroll 一行滑动 */
+.ovfs{
+  white-space: nowrap;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  background-color: #ffffff;
+  &.hide-scrollbar::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    display: none;
+  }
+  .ovfs-item{
+    display: inline-block;
+    position: relative;
+    width: auto;
+    vertical-align: top;
+  }
+}
+.loading-bg .ant-toast{
+  background: transparent !important;
+}
+
+/* 返回顶部 */
+.gotop{
+  @extend %gotop;
+  min-height: auto !important;
+}
+
+/* 懒加载 */
+.lazy-box, .lazyload{
+  position: relative;
+  background-color: #fff;
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+  &.half:after {
+    padding-top: 50%;
+  }
+  .lazy, .square-lazy{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 0;
+  }
+  img[lazy="loading"], img[lazy="error"] {
+    width: rem(40);
+  }
+  .square-lazy{
+    width: 100% !important;
+  }
+}
+
+.infinite-layer {
+  width: 100%;
+  height: rem(66);
+  font-size: rem(24);
+  @extend %comm-flex;
+  @include justify-content(center);
+  color: #ccc;
+}
+
+.infinite-preloader {
+  margin-right: rem(20);
+}
+
+//page transition
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+}
+
+.slide-enter-active, .slide-leave-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: transform .3s;
+}
+.slide-enter {
+  opacity: 0;
+  transform: translate3d(70%, 0, 0);
+}
+.slide-leave-active {
+  opacity: 0;
+  transform: translate3d(-70%, 0, 0);
+}
+
+.transition-reverse {
+  .slide-enter {
+    opacity: 0;
+    transform: translate3d(-70%, 0, 0);
+  }
+  .slide-leave-active {
+    opacity: 0;
+    transform: translate3d(70%, 0, 0);
+  }
+}
+
+// page content
+.page-content{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.page-view{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+//Android
+.tab-box-fixed {
+  position: fixed;
+  z-index: 10003;
+}
+//iOS
+.tab-box-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10003;
+}
+
+// select
+.select-icon{
+  -webkit-appearance: none;
+  width: rem(46) !important;
+  height: rem(46) !important;
+  min-height: rem(46) !important;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin-right: rem(20);
+  margin-left: rem(20);
+  border-radius: 50%;
+  &:checked{
+    background-color: #e6133c;
+    border: 1px solid #e6133c;
+    background-image: url('../assets/form-checked.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50%;
+  }
+}
+
+// 右箭头
+.arrow-right{
+  background: url("base64/arrow.png") no-repeat right center;
+  background-size: rem(12) auto;
+  padding-right: rem(24);
+}
+
+// 大于iOS8 给下面的.hair重置边框宽度为0.5px
+.ios-gt-8 .hair{
+  border-width: 0.5px !important;
+}
+
+

@@ -1,0 +1,142 @@
+@charset "utf-8";
+@import "src/sass/tobe/base";
+.page-content{
+	background-color: #fff;
+}
+.login{
+	padding: rem(30);
+	em,i,cite{
+		font-style: normal;
+	}
+	.gray-font{
+		color: #999;
+		font-size: rem(24);
+	}
+	.go-back{
+		width: rem(60);
+		height: rem(60);
+		background: url('../i/Group_24.png') no-repeat;
+		background-size: contain;
+	}
+	section{
+		padding: rem(50) rem(70);
+	}
+	h2{
+		font-weight: 100;
+		font-size: rem(50);
+	}
+	.mobile{
+		height: rem(44);
+		background: url('../i/phone_icon_login.png') no-repeat left center;
+		background-size: rem(30) rem(44);
+		padding: rem(10) 0 0 rem(40);
+		margin: rem(90) 0 0 0;
+	}
+	.telcode{
+		font-size: rem(28);
+		color: #999;
+		margin: rem(50) 0 0 0;
+	}
+	.init{
+		height: rem(100);
+		display: flex;
+		font-size: rem(40);
+		color: #333;
+		line-height: rem(100);
+		position: relative;
+		input{
+            width: 100%;
+            padding: 0 rem(50);
+			box-sizing:border-box;
+			clip: rect(0 0 0 0);
+		}
+		.iclose{
+			width: rem(40);
+			height: rem(40);
+			background: url('../i/clear_02icon.png') no-repeat center;
+			background-size: contain;
+			position: absolute;
+			right: 0;
+			top: rem(30);
+		}
+		.code{
+			width: rem(300);
+		}
+		span{
+			flex: 2;
+			font-size: rem(28);
+			color: #ccc;
+			text-align: right;
+        }
+        .sms{
+            color: #333;
+		}
+	}
+	.audio{
+		text-align: right;
+		padding: rem(24) 0 0 0;
+		color: #666;
+		font-size: rem(28);
+		cite{
+			color: #FF4A4A;
+		}
+	}
+	.audio-over{
+		color: #999;
+		cite{
+			color: #333;
+		}
+	}
+	.line{
+		border-bottom: rem(4) solid #FF4A4A;
+		border-radius: rem(2);
+	}
+	.tip{
+		margin-top: rem(50);
+		i{
+			width: rem(32);
+			height: rem(32);
+			background: url('../i/unselected.png') no-repeat;
+			background-size: contain;
+			float: left;
+			margin: 0 rem(16) 0 0;
+			&.agree{
+				background: url('../i/selected.png') no-repeat;
+				background-size: contain;
+			}
+		}
+	}
+	.button{
+		width: rem(210);
+		height: rem(210);
+		float: right;
+		margin: rem(120) 0 0 0;
+		&.next{
+			background: url('../i/next.png') no-repeat;
+			background-size: contain;
+		}
+		&.send{
+			background: url('../i/next_02.png') no-repeat;
+			background-size: contain;
+		}
+		&.over{
+			background: url('../i/shadow.png') no-repeat;
+			background-size: contain;
+		}
+		&.loading{
+			background: url('../i/btn_shadow.png') no-repeat;
+			background-size: contain;
+			position: relative;
+			img{
+				width: rem(40);
+				height: rem(40);
+				animation: roate 1s linear infinite;
+			}
+		}
+	}
+	@keyframes roate {
+		0%{transform:rotate(0deg)}
+		50%{transform:rotate(180deg)}
+		100%{transform:rotate(360deg)}
+	}
+}
