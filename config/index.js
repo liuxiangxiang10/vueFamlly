@@ -8,8 +8,15 @@ module.exports = {
   dev: {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/lxx/',
-    proxyTable: {},
-
+    proxyTable: {
+      '/h5_gateway': {
+        target: 'https://mh5.st.bl.com/h5_gateway',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/h5_gateway': ''
+        }
+      },
+    },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8089, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
@@ -24,7 +31,7 @@ module.exports = {
     useEslint: true,
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
-    showEslintErrorsInOverlay: false,
+    showEslintErrorsInOverlay: true,
 
     /**
      * Source Maps
@@ -54,7 +61,7 @@ module.exports = {
      * Source Maps
      */
 
-    productionSourceMap: true,
+    productionSourceMap: false,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 
